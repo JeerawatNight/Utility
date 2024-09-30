@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const { PDFDocument } = require('pdf-lib');
+const fs = require("fs");
+const path = require("path");
+const { PDFDocument } = require("pdf-lib");
 
 // Function to sort file names numerically
 function sortNumerically(files) {
@@ -13,13 +13,15 @@ function sortNumerically(files) {
 
 // Function to combine images into a PDF
 async function imagesToPDF(folderPath, fileName) {
-  const imagesFolder = path.resolve(__dirname, 'images', folderPath);
+  const imagesFolder = path.resolve(__dirname, "images", folderPath);
 
   // Get all JPG files from the folder
-  let imageFiles = fs.readdirSync(imagesFolder).filter(file => file.endsWith('.jpg'));
+  let imageFiles = fs
+    .readdirSync(imagesFolder)
+    .filter((file) => file.endsWith(".jpg"));
 
   if (imageFiles.length === 0) {
-    console.log('No images found in the folder.');
+    console.log("No images found in the folder.");
     return;
   }
 
@@ -63,7 +65,7 @@ async function imagesToPDF(folderPath, fileName) {
 }
 
 function imagesToPDF_ALL(subject) {
-  const imagesFolder = path.resolve(__dirname, 'images', subject);
+  const imagesFolder = path.resolve(__dirname, "images", subject);
   const dirImages = fs.readdirSync(imagesFolder);
   console.log(dirImages);
   for (const lesson of dirImages) {
@@ -73,5 +75,5 @@ function imagesToPDF_ALL(subject) {
   }
 }
 
-const subject = '32210 - องค์การและการจัดการและการจัดการเชิงกลยุทธ์';
+const subject = "10121 - อารยธรรมมนุษย์";
 imagesToPDF_ALL(subject);
